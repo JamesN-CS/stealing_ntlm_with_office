@@ -60,3 +60,18 @@ This is something I was made aware of when a colleague sent me video of a [talk 
 He then saves the document as a .zip file, extracts the contents, and modifies the link to the online image to point to his Responder server with the file:// URI . Save the file, compress the files back into a zip, and rename to .docx.
 
 When the file is opened, MS Word finds the "Online Media" link, and immediately goes out to track down the image using the currently logged in user's account credentials. The user is never told that their credentials were sent out by Word, or that the image failed to load.
+
+
+# PREVENTION
+Probably the most effective way of preventing this type of hash theft is by limiting outbound NTLM traffic through group policy and firewall rules.
+The policies you should configure are:
+
+- Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> Security Options -> Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers.
+  - Set this to “Deny All”.
+
+  ![images/6.png](images/6.png)
+
+- Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> Security Options -> Network security: Restrict NTLM: Add remote server exceptions for NTLM authentication.
+  - Add any trusted servers in your environment that require NTLM traffic.
+
+  ![images/7.png](images/7.png)
